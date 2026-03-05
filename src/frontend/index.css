@@ -1,0 +1,213 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Drape Studio — Luxury Design Tokens
+   Palette: Deep Black + Warm Gold + Ivory White
+   ============================================================ */
+
+/* Playfair Display — elegant serif for headings */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-VariableFont_wght.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Satoshi — clean modern sans-serif for body */
+@font-face {
+  font-family: "Satoshi";
+  src: url("/assets/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Core: Ivory white on pure black */
+    --background: 0.98 0.003 90;       /* near white ivory */
+    --foreground: 0.12 0.005 60;       /* near black */
+
+    /* Card: very light ivory */
+    --card: 0.97 0.004 85;
+    --card-foreground: 0.12 0.005 60;
+
+    --popover: 0.97 0.004 85;
+    --popover-foreground: 0.12 0.005 60;
+
+    /* Primary: deep black */
+    --primary: 0.12 0.005 60;
+    --primary-foreground: 0.98 0.003 90;
+
+    /* Secondary: light warm grey */
+    --secondary: 0.93 0.008 80;
+    --secondary-foreground: 0.12 0.005 60;
+
+    /* Muted */
+    --muted: 0.93 0.008 80;
+    --muted-foreground: 0.52 0.012 75;
+
+    /* Gold accent */
+    --accent: 0.72 0.12 75;            /* warm gold */
+    --accent-foreground: 0.12 0.005 60;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.01 80;
+    --input: 0.88 0.01 80;
+    --ring: 0.72 0.12 75;
+
+    /* Chart */
+    --chart-1: 0.72 0.12 75;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    /* Sidebar (unused but required) */
+    --sidebar: 0.97 0.004 85;
+    --sidebar-foreground: 0.12 0.005 60;
+    --sidebar-primary: 0.12 0.005 60;
+    --sidebar-primary-foreground: 0.98 0.003 90;
+    --sidebar-accent: 0.93 0.008 80;
+    --sidebar-accent-foreground: 0.12 0.005 60;
+    --sidebar-border: 0.88 0.01 80;
+    --sidebar-ring: 0.72 0.12 75;
+
+    /* Custom brand tokens */
+    --gold: 0.72 0.12 75;
+    --gold-light: 0.85 0.09 80;
+    --gold-dark: 0.58 0.13 72;
+    --obsidian: 0.1 0.005 40;
+    --obsidian-deep: 0.07 0.004 35;
+    --ivory: 0.97 0.006 85;
+    --ivory-warm: 0.94 0.01 80;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: "Satoshi", sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Satoshi", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ============================================================
+   Drape Studio Brand Utilities
+   ============================================================ */
+
+@layer utilities {
+  .font-display {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .font-body {
+    font-family: "Satoshi", sans-serif;
+  }
+
+  .text-gold {
+    color: oklch(var(--gold));
+  }
+
+  .bg-gold {
+    background-color: oklch(var(--gold));
+  }
+
+  .bg-gold-light {
+    background-color: oklch(var(--gold-light));
+  }
+
+  .bg-obsidian {
+    background-color: oklch(var(--obsidian));
+  }
+
+  .bg-obsidian-deep {
+    background-color: oklch(var(--obsidian-deep));
+  }
+
+  .bg-ivory {
+    background-color: oklch(var(--ivory));
+  }
+
+  .bg-ivory-warm {
+    background-color: oklch(var(--ivory-warm));
+  }
+
+  .border-gold {
+    border-color: oklch(var(--gold));
+  }
+
+  .border-gold-light {
+    border-color: oklch(var(--gold-light));
+  }
+
+  /* Elegant gold underline accent */
+  .gold-underline {
+    position: relative;
+  }
+
+  .gold-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: oklch(var(--gold));
+  }
+
+  .gold-underline-center::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Scroll reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Luxury divider */
+  .luxury-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .luxury-divider::before,
+  .luxury-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: oklch(var(--gold) / 0.35);
+  }
+}
